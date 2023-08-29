@@ -2,7 +2,7 @@
 #
 inherit cargo
 
-SRC_URI += "gitsm://github.com/Azure/iotedge.git;branch=release/1.2"
+SRC_URI += "gitsm://github.com/Azure/iotedge.git;branch=release/1.2;protocol=https"
 SRCREV = "e15b86b2783d64b6136b15fcd09e3584269c3be1"
 
 S = "${WORKDIR}/git"

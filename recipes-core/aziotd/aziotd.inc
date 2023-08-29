@@ -1,16 +1,16 @@
 DEPENDS += "openssl virtual/docker aziot-keys aziotctl"
-RDEPENDS_${PN} += "docker aziot-keys aziotctl"
+RDEPENDS:${PN} += "docker aziot-keys aziotctl"
 
 inherit systemd 
 
 SYSTEMD_PACKAGES = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', '${PN}', '', d)}"
-#SYSTEMD_SERVICE_${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'aziot-certd.service', '', d)}"
+#SYSTEMD_SERVICE:${PN} = "${@bb.utils.contains('DISTRO_FEATURES', 'systemd', 'aziot-certd.service', '', d)}"
 
-SYSTEMD_AUTO_ENABLE_${PN} = "enable"
-SYSTEMD_SERVICE_${PN} = "aziot-certd.service"
-SYSTEMD_SERVICE_${PN} += "aziot-identityd.service"
-SYSTEMD_SERVICE_${PN} += "aziot-keyd.service"
-SYSTEMD_SERVICE_${PN} += "aziot-tpmd.service"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
+SYSTEMD_SERVICE:${PN} = "aziot-certd.service"
+SYSTEMD_SERVICE:${PN} += "aziot-identityd.service"
+SYSTEMD_SERVICE:${PN} += "aziot-keyd.service"
+SYSTEMD_SERVICE:${PN} += "aziot-tpmd.service"
 
 SRC_URI += "file://aziot-certd.service \
             file://aziot-identityd.service \
@@ -57,12 +57,12 @@ do_install () {
 
 inherit useradd
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "-r -s /bin/false aziotid; "
-USERADD_PARAM_${PN} += "-r -s /bin/false aziotcs; "
-USERADD_PARAM_${PN} += "-r -s /bin/false aziotks; "
-USERADD_PARAM_${PN} += "-r -s /bin/false aziottpm; "
+USERADD_PARAM:${PN} = "-r -s /bin/false aziotid; "
+USERADD_PARAM:${PN} += "-r -s /bin/false aziotcs; "
+USERADD_PARAM:${PN} += "-r -s /bin/false aziotks; "
+USERADD_PARAM:${PN} += "-r -s /bin/false aziottpm; "
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${systemd_unitdir}/system/* \
     ${bindir}/aziot-* \
     ${localstatedir}/lib/aziotid \

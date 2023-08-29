@@ -1,9 +1,9 @@
 DEPENDS += "openssl virtual/docker aziot-cli aziotd"
-RDEPENDS_${PN} += "docker aziot-cli aziotd"
+RDEPENDS:${PN} += "docker aziot-cli aziotd"
 
 inherit systemd
-SYSTEMD_AUTO_ENABLE_${PN} = "enable"
-SYSTEMD_SERVICE_${PN} = "aziot-edged.service"
+SYSTEMD_AUTO_ENABLE:${PN} = "enable"
+SYSTEMD_SERVICE:${PN} = "aziot-edged.service"
 
 SRC_URI += "file://aziot-edged.service  \
 "
@@ -35,10 +35,10 @@ do_install () {
 
 inherit useradd
 USERADD_PACKAGES = "${PN}"
-USERADD_PARAM_${PN} = "-r -u 15580 -g iotedge -G docker -s /bin/false -d ${localstatedir}/lib/iotedge iotedge"
-GROUPADD_PARAM_${PN} = "-r -g 15580 iotedge"
+USERADD_PARAM:${PN} = "-r -u 15580 -g iotedge -G docker -s /bin/false -d ${localstatedir}/lib/iotedge iotedge"
+GROUPADD_PARAM:${PN} = "-r -g 15580 iotedge"
 
-FILES_${PN} += " \
+FILES:${PN} += " \
     ${systemd_unitdir}/system/* \
     ${localstatedir}/lib/iotedge \
     ${sysconfdir}/aziot/ \
