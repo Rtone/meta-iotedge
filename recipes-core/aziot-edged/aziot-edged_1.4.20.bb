@@ -7,8 +7,8 @@ inherit cargo pkgconfig
 
 # how to get aziot-edged could be as easy as but default to a git checkout:
 # SRC_URI += "crate://crates.io/aziot-edged/0.1.0"
-SRC_URI += "git://github.com/Azure/iotedge;protocol=https;nobranch=1"
-SRCREV = "b4c7dc64765c1b33aa563ff0e7a317516b9fce00"
+SRC_URI += "git://github.com/Azure/iotedge.git;protocol=https;nobranch=1"
+SRCREV = "3a1e084849d81386fa9a509148844044cc096a15"
 S = "${WORKDIR}/git/edgelet"
 CARGO_SRC_DIR = "aziot-edged"
 
@@ -235,9 +235,9 @@ SRC_URI += " \
     crate://crates.io/zip/0.6.6 \
 "
 
-LIC_FILES_CHKSUM=" \
-file://../LICENSE;md5=0f7e3b1308cb5c00b372a6e78835732d \
-file://../THIRDPARTYNOTICES;md5=11604c6170b98c376be25d0ca6989d9b \
+LIC_FILES_CHKSUM = " \
+    file://../LICENSE;md5=0f7e3b1308cb5c00b372a6e78835732d \
+    file://../THIRDPARTYNOTICES;md5=11604c6170b98c376be25d0ca6989d9b \
 "
 
 SUMMARY = "The aziot-edged is the main binary for the IoT edge daemon."
